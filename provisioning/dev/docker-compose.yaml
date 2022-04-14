@@ -1,0 +1,6 @@
+services:
+    mailcatcher:
+        image: schickling/mailcatcher
+        ports:
+            - '42025:1025'
+            - '42180:1080'

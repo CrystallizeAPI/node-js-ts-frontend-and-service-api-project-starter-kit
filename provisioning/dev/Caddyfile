@@ -1,0 +1,35 @@
+service-api.domain.name {
+    tls ./provisioning/dev/certs/domains.pem ./provisioning/dev/certs/key.pem
+    
+    reverse_proxy 127.0.0.1:42081 {
+        header_up Host                {host}
+        header_up X-Real-IP           {remote}
+        header_up X-Forwarded-Host    {host}
+        header_up X-Forwarded-Server  {host}
+        header_up X-Forwarded-Port    {port}
+        header_up X-Forwarded-For     {remote}
+        header_up X-Forwarded-Scheme  {scheme}
+    }
+}
+
+frontend.domain.name {
+    tls ./provisioning/dev/certs/domains.pem ./provisioning/dev/certs/key.pem
+
+    # Usefull for Remix Run and/or if you have LiveReload enabled and/or if you just have websockets
+    # @websockets {
+    #     header Connection *Upgrade*
+    #     header Upgrade websocket
+    # }
+    # reverse_proxy @websockets localhost:42082
+    
+    reverse_proxy 127.0.0.1:42080 {
+        header_up Host                {host}
+        header_up X-Real-IP           {remote}
+        header_up X-Forwarded-Host    {host}
+        header_up X-Forwarded-Server  {host}
+        header_up X-Forwarded-Port    {port}
+        header_up X-Forwarded-For     {remote}
+        header_up X-Forwarded-Scheme  {scheme}
+    }
+}
+

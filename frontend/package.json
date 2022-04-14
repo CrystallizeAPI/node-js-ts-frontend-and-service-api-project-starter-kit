@@ -1,0 +1,22 @@
+{
+    "name": "frontend-with-crystallize",
+    "private": true,
+    "description": "Frontend with Crystallize",
+    "license": "proprietary",
+    "sideEffects": false,
+    "scripts": {
+        "dev": "PORT=42080"
+    },
+    "dependencies": {
+        "@crystallize/js-api-client": "^0.5.0"
+    },
+    "devDependencies": {
+        "typescript": "^4.5.5"
+    },
+    "engines": {
+        "node": ">=16"
+    },
+    "volta": {
+        "node": "16.14.2"
+    }
+}
